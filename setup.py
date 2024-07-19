@@ -52,7 +52,7 @@ setuptools.setup(
         'jaxlib',
         'ml_collections',
         'neural-tangents',
-        'numpy',
+        'numpy==1.26',
         'pandas',
         'plotnine',
         'tensorflow==2.8.0',  # to be compatible with dm-acme

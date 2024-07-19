@@ -1,0 +1,21 @@
+absl-py
+chex
+dm-haiku
+enn@ git+https://git@github.com/deepmind/enn
+jax
+jaxlib
+ml_collections
+neural-tangents
+numpy==1.26
+pandas
+plotnine
+tensorflow==2.8.0
+tensorflow-datasets==4.6.0
+tensorflow_probability==0.15.0
+typing-extensions
+protobuf==3.20.0
+
+[testing]
+mock
+pytest-xdist
+pytype==2021.8.11
