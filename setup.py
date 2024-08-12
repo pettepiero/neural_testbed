@@ -44,6 +44,8 @@ setuptools.setup(
     keywords='probabilistic-inference python machine-learning',
     packages=setuptools.find_packages(),
     install_requires=[
+        'acme',
+        'dm-acme',
         'absl-py',
         'chex',
         'dm-haiku',
@@ -52,7 +54,7 @@ setuptools.setup(
         'jaxlib',
         'ml_collections',
         'neural-tangents',
-        'numpy',
+        'numpy<2',
         'pandas',
         'plotnine',
         'tensorflow==2.8.0',  # to be compatible with dm-acme

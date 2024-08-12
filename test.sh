@@ -21,8 +21,9 @@ set -e
 set -x
 
 # Set up a new virtual environment.
-python3 -m venv ntb_testing
-source ntb_testing/bin/activate
+#python3 -m venv ntb_testing
+#source ntb_testing/bin/activate
+source ~/Downloads/venvs/neural_testbed/bin/activate
 
 # This prints the path to the python binary we are using. It should be inside
 # the virtualenv you just created (in this case the path should end in
@@ -42,7 +43,7 @@ pip install .
 pip install .[testing]
 
 N_CPU=$(grep -c ^processor /proc/cpuinfo)
-
+N_CPU=4
 # Run static type-checking.
 pytype -j "${N_CPU}" neural_testbed
 

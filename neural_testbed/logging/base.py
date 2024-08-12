@@ -18,6 +18,8 @@
 
 import abc
 import time
+import jax
+import numpy as np
 from typing import Any, Callable, Dict, Mapping, Sequence, Tuple
 
 from acme.utils import loggers
@@ -88,14 +90,18 @@ class LoggingWrapper(testbed_base.TestbedProblem):
 
 
 def clean_results(results: Dict[str, Any]) -> Dict[str, Any]:
-  """Cleans the results for logging."""
-  def clean_result(value: Any) -> Any:
-    value = loggers.to_numpy(value)
-    if isinstance(value, chex.Array) and value.size == 1:
-      value = float(value)
-    return value
+    """Cleans the results for logging."""
 
-  for key, value in results.items():
-    results[key] = clean_result(value)
+    def clean_result(value: Any) -> Any:
+        value = loggers.to_numpy(value)
+        if (
+            isinstance(value, (jax.Array, np.ndarray, np.bool_, np.number))
+            and value.size == 1
+        ):
+            value = float(value)
+        return value
 
-  return results
+    for key, value in results.items():
+        results[key] = clean_result(value)
+
+    return results
